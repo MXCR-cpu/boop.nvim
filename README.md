@@ -1,3 +1,3 @@
 # boop.nvim
-A plugin for quick manipulation, hashing, scripting of text
+A plugin for quickly manipulating, hashing, or scripting text
 
