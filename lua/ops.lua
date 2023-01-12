@@ -22,11 +22,14 @@ local get_visual_selection = function()
 	return { left_position[1], left_position[2], right_position[1], right_position[2] }, lines
 end
 
+local no_window_buffer = function(window_info)
+	return window_info == nil or window_info["win_id"] == nil or not vim.api.nvim_win_is_valid(window_info["win_id"])
+end
+
 M.get_visual_selection = get_visual_selection
 
 M.receive_text = function(window_info)
-	if window_info == nil or window_info["win_id"] == nil or not vim.api.nvim_win_is_valid(window_info["win_id"]) then
-		window_info = {}
+	if no_window_buffer(window_info) then
 		return get_visual_selection()
 	end
 	local pos = vim.api.nvim_win_get_cursor(tonumber(window_info["win_id"]))
@@ -38,7 +41,7 @@ M.receive_text = function(window_info)
 end
 
 M.set_text = function(window_info, position_array, lines_array)
-	if not next(window_info) then
+	if no_window_buffer(window_info) then
 		vim.api.nvim_buf_set_text(
 			0,
 			position_array[1],
