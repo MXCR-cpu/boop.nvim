@@ -25,7 +25,7 @@ end
 M.get_visual_selection = get_visual_selection
 
 M.receive_text = function(window_info)
-	if not window_info["win_id"] or not vim.api.nvim_win_is_valid(window_info["win_id"]) then
+	if window_info == nil or window_info["win_id"] == nil or not vim.api.nvim_win_is_valid(window_info["win_id"]) then
 		window_info = {}
 		return get_visual_selection()
 	end
