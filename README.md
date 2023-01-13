@@ -8,8 +8,8 @@ A lightweight neovim plugin port of the Mac application [Boop](https://apps.appl
 - Future implementations will implement more ciphers and more text encoding variety
 
 ## ✔️  To-do
-- [] Syntax highlighting for the Boop Scratchpad
-- [] Configuration plugin options
+-[] Syntax highlighting for the Boop Scratchpad
+-[] Configuration plugin options
 
 ## 📦 Installation
 Install boop.nvim with Packer:
