@@ -63,7 +63,7 @@ end
 -- Converting Case Functions
 M.camel_case = function(direction, array, text)
 	direction = direction
-	text = text or ""
+	text = text:gsub("_", " ") or ""
 	local string_array = split(array[1], " ")
 	for i = 1, #string_array do
 		text = text
