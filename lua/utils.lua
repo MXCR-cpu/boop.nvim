@@ -21,6 +21,11 @@ local split = function(input_string, separator)
 	end
 	return new_table
 end
+
+local normalize = function(input_string)
+	return split(input_string:gsub("-", " "):gsub("_", " "), " ")
+end
+
 M.split = split
 
 M.string_slice = function(input_string, start_index, end_index)
@@ -63,8 +68,9 @@ end
 -- Converting Case Functions
 M.camel_case = function(direction, array, text)
 	direction = direction
-	text = text:gsub("_", " ") or ""
-	local string_array = split(array[1], " ")
+	text = text or ""
+	-- local string_array = split(array[1]:gsub("_", " "), " ")
+	local string_array = normalize(array[1])
 	for i = 1, #string_array do
 		text = text
 			.. _if(i == 1, string_array[i]:sub(1, 1):lower(), string_array[i]:sub(1, 1):upper())
@@ -76,7 +82,7 @@ end
 M.snake_case = function(direction, array, text)
 	direction = direction
 	text = text or ""
-	local string_array = split(array[1], " ")
+	local string_array = normalize(array[1])
 	for i = 1, #string_array do
 		text = text .. string_array[i] .. _if(i == #string_array, "", "_")
 	end
