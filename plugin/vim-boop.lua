@@ -8,7 +8,7 @@ local boop_test = require("tests")
 
 vim.api.nvim_create_user_command("Boop", boop.create_window, {})
 
-vim.api.nvim_create_user_command("BoopTest", boop_test.run_test, {})
+vim.api.nvim_create_user_command("BoopTest", boop_test.run_tests, {})
 
 vim.api.nvim_create_user_command("BoopEvalJavascript", boop.eval_script("javascript"), { range = true })
 vim.api.nvim_create_user_command("BoopEvalPython", boop.eval_script("python"), { range = true })
