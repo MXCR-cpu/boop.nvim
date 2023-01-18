@@ -8,7 +8,7 @@ M.run_tests = function()
 	local cases = { "camel_case", "snake_case", "kebab_case" }
 	for index = 1, #cases do
 		if utils[cases[index]]("To", {string_sentences[1]}, "") ~= string_sentences[1 + index] then
-			print("case " .. cases[index] .. " failed to convert to regular sentence")
+			print("case " .. cases[index] .. ": failed to convert to case sentence")
 		end
 	end
 end
