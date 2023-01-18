@@ -74,7 +74,7 @@ M.camel_case = function(direction, array, text)
 	for i = 1, #string_array do
 		text = text
 			.. _if(i == 1, string_array[i]:sub(1, 1):lower(), string_array[i]:sub(1, 1):upper())
-			.. string_array[i]:sub(2, #string_array)
+			.. string_array[i]:sub(2, #string_array[i])
 	end
 	return text
 end
