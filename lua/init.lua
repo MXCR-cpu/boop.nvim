@@ -2,7 +2,6 @@ local plenary = require("plenary.window.float")
 local utils = require("utils")
 local ops = require("ops")
 local cmd = vim.cmd
-local api = vim.api
 
 M = {}
 
