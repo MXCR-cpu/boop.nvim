@@ -11,7 +11,7 @@ M.window = {}
 
 M.create_window = function()
 	local win_opts = {
-		winblend = 15,
+		winblend = 0,
 		percentage = 0.5,
 	}
 	local border_opts = {
