@@ -2,6 +2,7 @@ local plenary = require("plenary.window.float")
 local utils = require("utils")
 local ops = require("ops")
 local cmd = vim.cmd
+local api = vim.api
 
 M = {}
 
@@ -10,7 +11,7 @@ M.window = {}
 
 M.create_window = function()
 	local win_opts = {
-		winblend = 5,
+		winblend = 15,
 		percentage = 0.5,
 	}
 	local border_opts = {
@@ -37,7 +38,7 @@ M.eval_script = function(language)
 		if not script_command[language] then
 			return
 		end
-		vim.cmd("set ft=" .. language)
+		cmd("set ft=" .. language)
 		local pos, array_text = ops.receive_text(M.window)
 		if not array_text or not next(array_text) then
 			return
