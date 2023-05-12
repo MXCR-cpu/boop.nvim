@@ -15,6 +15,7 @@ M.create_window = function()
 		percentage = 0.5,
 	}
 	local border_opts = {
+		title = { pos = "N", text = "Boop" },
 		topleft = "┌",
 		topright = "┐",
 		top = "─",
@@ -25,7 +26,6 @@ M.create_window = function()
 		bot = "─",
 	}
 	M.window = plenary.percentage_range_window(0.5, 0.5, win_opts, border_opts)
-	-- ops.window_virtual_text(M.window)
 end
 
 M.eval_script = function(language)
