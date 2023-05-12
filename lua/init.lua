@@ -15,7 +15,7 @@ M.create_window = function()
 		percentage = 0.5,
 	}
 	local border_opts = {
-		title = { pos = "N", text = "Boop" },
+		title = "Boop",
 		topleft = "┌",
 		topright = "┐",
 		top = "─",
