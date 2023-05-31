@@ -6,9 +6,10 @@ Loaded_boop = true
 local boop = require("init")
 local boop_test = require("tests")
 local commands = {
-	javascript = boop.eval_script("javascript"),
-	python = boop.eval_script("python"),
-	lua = boop.eval_script("lua"),
+	javascript = boop.eval_script("javascript", "node"),
+	lua = boop.eval_script("lua", "lua"),
+	python = boop.eval_script("python", "python3"),
+	scheme = boop.eval_script("scheme", "chez | tail -n 1 | cut -d '>' -f 2,2"),
 }
 local direction = {"to", "from"}
 local base = {"hex", "octal", "binary", "base64"}
@@ -21,9 +22,7 @@ local complete = function(cmd, prefix)
 		plugins[#plugins + 1] = name
 	end
 	table.sort(plugins)
-	return vim.tbl_filter(function(key)
-		return key:find(prefix, 1, true) == 1
-	end, plugins)
+	return plugins
 end
 
 api.nvim_create_user_command("Boop", boop.create_window, {})
@@ -39,9 +38,7 @@ end, {
 		if #args > 1 then
 			return complete(prefix, args[#args])
 		end
-		return vim.tbl_filter(function(key)
-			return key:find(prefix, 1, true) == 1
-		end, vim.tbl_keys(commands))
+		return vim.tbl_keys(commands)
 	end
 })
 api.nvim_create_user_command("BoopConvert", function(cmd)

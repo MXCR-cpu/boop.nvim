@@ -27,22 +27,22 @@ M.create_window = function()
 	M.window = plenary.percentage_range_window(0.5, 0.5, win_opts, border_opts)
 end
 
-M.eval_script = function(language)
+M.eval_script = function(language, cli)
 	return function()
-		local script_command = {
-			javascript = "node",
-			python = "python3",
-			lua = "lua",
-		}
-		if not script_command[language] then
-			return
-		end
+		-- local script_command = {
+		-- 	javascript = "node",
+		-- 	python = "python3",
+		-- 	lua = "lua",
+		-- }
+		-- if not script_command[language] then
+		-- 	return
+		-- end
 		cmd("set ft=" .. language)
 		local pos, array_text = ops.receive_text(M.window)
 		if not array_text or not next(array_text) then
 			return
 		end
-		ops.set_text(M.window, pos, utils.script_call(script_command[language], array_text))
+		ops.set_text(M.window, pos, utils.script_call(cli, array_text))
 	end
 end
 
